@@ -36,4 +36,6 @@ test('Suppression d\'une voiture', async () => {
 
   const cars = concession.getAllCars();
   expect(cars).not.toContainEqual(carToRemove);
+  expect(cars).toHaveLength(1); 
+
 });
