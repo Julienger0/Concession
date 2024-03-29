@@ -29,7 +29,7 @@ test('Suppression d\'une voiture', async () => {
   const concession = new Concession();
   concession.addCar('Toyota', 'Corolla');
   concession.addCar('Honda', 'Civic');
-  const carToRemove = concession.addCar('Ford', 'Focus');
+  const carToRemove = { brand: 'Toyota', model: 'Corolla' };
 
   concession.removeCar(carToRemove);
 
