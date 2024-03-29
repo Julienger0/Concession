@@ -17,6 +17,10 @@ export class Concession {
         return Array.from(uniqueBrands);
     }
 
+    searchCar(brand: string): { brand: string; model: string }[] {
+        return this.cars.filter(car => car.brand === brand);
+    }
+
     removeCar(car: { brand: string; model: string }): void {
     this.cars = this.cars.filter(c => c.brand !== car.brand || c.model !== car.model);
 }

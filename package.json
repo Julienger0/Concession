@@ -12,5 +12,8 @@
     "@types/node": "^20.11.30",
     "typescript": "^5.4.3",
     "vitest": "^1.4.0"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1"
   }
 }

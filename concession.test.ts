@@ -39,3 +39,17 @@ test('Suppression d\'une voiture', async () => {
   expect(cars).toHaveLength(1); 
 
 });
+
+test('Recherche de voitures par marque', async () => {
+  const concession = new Concession();
+  concession.addCar('Toyota', 'Corolla');
+  concession.addCar('Toyota', 'Camry');
+  concession.addCar('Honda', 'Accord');
+
+  const toyotaCars = concession.searchCar('Toyota');
+
+  expect(toyotaCars).toContainEqual({ brand: 'Toyota', model: 'Corolla' });
+  expect(toyotaCars).toContainEqual({ brand: 'Toyota', model: 'Camry' });
+  expect(toyotaCars).toHaveLength(2); 
+});
+
