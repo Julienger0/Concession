@@ -23,6 +23,7 @@ test('Affichage de la liste des voitures', async () => {
 
   expect(cars).toContainEqual({ brand: 'Toyota', model: 'Corolla' });
   expect(cars).toContainEqual({ brand: 'Honda', model: 'Civic' });
+  expect(cars).toHaveLength(2); 
 });
 
 test('Suppression d\'une voiture', async () => {
@@ -34,5 +35,5 @@ test('Suppression d\'une voiture', async () => {
   concession.removeCar(carToRemove);
 
   const cars = concession.getAllCars();
-  expect(cars).not.toContainEqual({ brand: 'Ford', model: 'Focus' });
+  expect(cars).not.toContainEqual(carToRemove);
 });
