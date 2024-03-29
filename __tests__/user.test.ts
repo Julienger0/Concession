@@ -1,11 +1,11 @@
-import { User } from './user';
+import { User } from '../user';
 import { test, expect } from 'vitest';
 
 test('Inscription d\'un utilisateur', async () => {
     const user = new User('John', 'password');
     user.register({ name: 'John', password: 'password' });
     const userList = user.getUserList();
-    expect(userList).toContainEqual({ name: 'John', password: 'password' });
+    expect(userList).toContainEqual({ name: 'John', password: expect.any(String), isCarDealer: false });
 });
 
 test('Connexion d\'un utilisateur', async () => {
@@ -23,10 +23,11 @@ test('Connexion d\'un utilisateur avec mauvais mot de passe', async () => {
 });
 
 test('Recherche d\'un utilisateur', async () => {
+  // recherche d'un utilisateur comme une bar de recherche
     const user = new User('John', 'password');
     user.register({ name: 'John', password: 'password' });
     const searchedUser = user.searchUser('John');
-    expect(searchedUser).toEqual({ name: 'John', password: 'password' });
+    expect(searchedUser).toEqual('John');
 });
 
 test('Chiffrement du mot de passe', async () => {

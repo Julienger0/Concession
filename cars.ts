@@ -1,4 +1,4 @@
-export class Concession {
+export class Cars {
     private cars: { brand: string; model: string }[] = [];
 
     constructor() {}

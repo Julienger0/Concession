@@ -1,13 +1,13 @@
 import { test, expect } from 'vitest';
-import { Concession } from './concession'; 
+import { Cars } from '../cars'; 
 
 test('Affichage de la liste des marques sans doublons', async () => {
-  const concession = new Concession();
-  concession.addCar('Toyota', 'Corolla');
-  concession.addCar('Toyota', 'Camry');
-  concession.addCar('Honda', 'Accord');
+  const car = new Cars();
+  car.addCar('Toyota', 'Corolla');
+  car.addCar('Toyota', 'Camry');
+  car.addCar('Honda', 'Accord');
 
-  const uniqueBrands = concession.getUniqueBrands();
+  const uniqueBrands = car.getUniqueBrands();
 
   expect(uniqueBrands).toContain('Toyota');
   expect(uniqueBrands).toContain('Honda');
@@ -15,11 +15,11 @@ test('Affichage de la liste des marques sans doublons', async () => {
 });
 
 test('Affichage de la liste des voitures', async () => {
-  const concession = new Concession();
-  concession.addCar('Toyota', 'Corolla');
-  concession.addCar('Honda', 'Civic');
+  const car = new Cars();
+  car.addCar('Toyota', 'Corolla');
+  car.addCar('Honda', 'Civic');
 
-  const cars = concession.getAllCars();
+  const cars = car.getAllCars();
 
   expect(cars).toContainEqual({ brand: 'Toyota', model: 'Corolla' });
   expect(cars).toContainEqual({ brand: 'Honda', model: 'Civic' });
@@ -27,26 +27,26 @@ test('Affichage de la liste des voitures', async () => {
 });
 
 test('Suppression d\'une voiture', async () => {
-  const concession = new Concession();
-  concession.addCar('Toyota', 'Corolla');
-  concession.addCar('Honda', 'Civic');
+  const car = new Cars();
+  car.addCar('Toyota', 'Corolla');
+  car.addCar('Honda', 'Civic');
   const carToRemove = { brand: 'Toyota', model: 'Corolla' };
 
-  concession.removeCar(carToRemove);
+  car.removeCar(carToRemove);
 
-  const cars = concession.getAllCars();
+  const cars = car.getAllCars();
   expect(cars).not.toContainEqual(carToRemove);
   expect(cars).toHaveLength(1); 
 
 });
 
 test('Recherche de voitures par marque', async () => {
-  const concession = new Concession();
-  concession.addCar('Toyota', 'Corolla');
-  concession.addCar('Toyota', 'Camry');
-  concession.addCar('Honda', 'Accord');
+  const car = new Cars();
+  car.addCar('Toyota', 'Corolla');
+  car.addCar('Toyota', 'Camry');
+  car.addCar('Honda', 'Accord');
 
-  const toyotaCars = concession.searchCar('Toyota');
+  const toyotaCars = car.searchCar('Toyota');
 
   expect(toyotaCars).toContainEqual({ brand: 'Toyota', model: 'Corolla' });
   expect(toyotaCars).toContainEqual({ brand: 'Toyota', model: 'Camry' });

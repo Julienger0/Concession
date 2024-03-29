@@ -28,22 +28,24 @@ export class User {
         return this.userList;
     }
 
-    searchUser(username: string): { name: string; password: string } | undefined {
-        return this.userList.find(user => user.name === username);
+    searchUser(username: string): string | void {
+        const user = this.userList.find(user => user.name === username);
+        if (user) {
+            return user.name;
+        }
     }
     
     connectUser(username: string, password: string): string {
-        const user = this.searchUser(username);
+        const user = this.userList.find(user => user.name === username);
         if (user) {
             const isPasswordCorrect = bcrypt.compareSync(password, user.password);
             if (isPasswordCorrect) {
-                return "Connected";
+                return 'Connected';
             } else {
-                return "Wrong password";
+                return 'Wrong password';
             }
-        } else {
-            return "User does not exist";
         }
+        return 'User not found';
     }
 
 }
