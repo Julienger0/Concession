@@ -9,9 +9,8 @@ test('Affichage de la liste des marques sans doublons', async () => {
 
   const uniqueBrands = concession.getUniqueBrands();
 
-  expect(uniqueBrands).toContain('Toyota');
-  expect(uniqueBrands).toContain('Honda');
-  expect(uniqueBrands).toHaveLength(2); 
+ expect(uniqueBrands).toEqual((['Toyota', 'Honda']));
+
 });
 
 test('Affichage de la liste des voitures', async () => {
@@ -21,9 +20,10 @@ test('Affichage de la liste des voitures', async () => {
 
   const cars = concession.getAllCars();
 
-  expect(cars).toContainEqual({ brand: 'Toyota', model: 'Corolla' });
-  expect(cars).toContainEqual({ brand: 'Honda', model: 'Civic' });
-  expect(cars).toHaveLength(2); 
+  expect(cars).toEqual([
+    { brand: 'Toyota', model: 'Corolla' },
+    { brand: 'Honda', model: 'Civic' }
+  ]);
 });
 
 test('Suppression d\'une voiture', async () => {
@@ -35,7 +35,9 @@ test('Suppression d\'une voiture', async () => {
   concession.removeCar(carToRemove);
 
   const cars = concession.getAllCars();
-  expect(cars).not.toContainEqual(carToRemove);
-  expect(cars).toHaveLength(1); 
+
+  expect(cars).toEqual([
+    { brand: 'Honda', model: 'Civic' }
+  ]);
 
 });
