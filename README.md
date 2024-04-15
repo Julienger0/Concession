@@ -23,6 +23,3 @@
 <p>Pour exécuter les tests unitaires, assurez-vous d'avoir Vitest installé dans votre environnement de développement. Ensuite, exécutez la commande suivante :</p>
 <pre>npm test</pre>
 <p>Cela lancera l'exécution de tous les tests unitaires définis dans le projet.</p>
-
-<h2>Contributions</h2>
-<p>Les contributions sous forme de corrections de bugs, d'améliorations de fonctionnalités ou de nouveaux tests unitaires sont les bienvenues. Veuillez ouvrir une demande de tirage (pull request) décrivant les modifications proposées.</p>
