@@ -1,4 +1,4 @@
-export class Concession {
+export class Cars {
     private cars: { brand: string; model: string }[] = [];
 
     constructor() {}
@@ -15,6 +15,10 @@ export class Concession {
         const uniqueBrands = new Set<string>();
         this.cars.forEach(car => uniqueBrands.add(car.brand));
         return Array.from(uniqueBrands);
+    }
+
+    searchCar(brand: string): { brand: string; model: string }[] {
+        return this.cars.filter(car => car.brand === brand);
     }
 
     removeCar(car: { brand: string; model: string }): void {
